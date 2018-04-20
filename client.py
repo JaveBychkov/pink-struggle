@@ -36,6 +36,8 @@ class Client(object):
         self.last_task = None
 
     def finish_task(self, data):
+        """Called when task is finished, sets additional attributes on task
+        object."""
         _, _, number_time = data.partition('#')
         number, _ = number_time.split(' in ')
         task = [t for t in self.tasks_sent if t.number == int(number)][0]
@@ -43,21 +45,27 @@ class Client(object):
         task.time_spent = task.done_at - task.sent_at
 
     def get_finished_tasks(self):
+        """Returns finished tasks."""
         return [t for t in self.tasks_sent if t.done_at is not None]
 
     def num_of_finished_tasks(self):
+        """Returns number of finished tasks."""
         return len(self.get_finished_tasks())
 
     def num_of_unfinished_tasks(self):
+        """Returns number of unfinished tasks."""
         return len(self.tasks_sent) - self.num_of_finished_tasks()
 
     def max_time_spent(self):
+        """Returns the longest time spent on a single task."""
         return max(t.time_spent for t in self.get_finished_tasks())
 
     def min_time_spent(self):
+        """Returns the shortest time spent on a single task."""
         return min(t.time_spent for t in self.get_finished_tasks())
 
     def average_time_spent(self):
+        """Returns the average of spent time on all tasks."""
         tasks = self.get_finished_tasks()
         return sum(t.time_spent for t in tasks) / len(tasks)
 

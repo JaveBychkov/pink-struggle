@@ -1,0 +1,6 @@
+{
+    "dispatcher_host": "localhost",
+    "dispatcher_port": 8000,
+    "frequency": 4,
+    "max_tasks": 25
+}

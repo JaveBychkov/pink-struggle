@@ -1,0 +1,10 @@
+{
+    "port": 8001,
+    "sleep_min": 2,
+    "sleep_max": 10,
+    "notify_interval": 10,
+    "dispatcher_host": "localhost",
+    "dispatcher_port": 8000,
+    "break_chance": 3,
+    "break_time": 15
+}
